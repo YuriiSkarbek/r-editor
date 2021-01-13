@@ -1,45 +1,42 @@
 <template>
   <div class="toolkit">
     <div class="toolkit-group">
-      <button class="toolkit-item">
+      <button class="toolkit-item" @click="$emit('style-text', 'bold')">
         <img src="@/assets/icons/bold.svg" alt="Bold">
       </button>
-      <button class="toolkit-item">
+      <button class="toolkit-item" @click="$emit('style-text', 'italic')">
         <img src="@/assets/icons/italic.svg" alt="italic">
       </button>
-      <button class="toolkit-item">
+      <button class="toolkit-item" @click="$emit('style-text', 'underline')">
         <img src="@/assets/icons/underline.svg" alt="underline">
       </button>
-      <button class="toolkit-item">
+      <button class="toolkit-item" @click="$emit('style-text', 'strikethrough')">
         <img src="@/assets/icons/strike.svg" alt="strike">
       </button>
     </div>
-    <div class="toolkit-group">
+    <label class="toolkit-group">
       <div class="toolkit-item">
         Size:
       </div>
-      <select>
-        <option value="10">10</option>
-        <option value="12">12</option>
-        <option value="14">14</option>
-        <option value="16">16</option>
-        <option value="20">20</option>
-        <option value="24">24</option>
-        <option value="32">32</option>
+      <select @change="$emit('style-text', 'fontSize', $event.target.value)">
+        <option value="1">Small</option>
+        <option value="3">Normal</option>
+        <option value="5">Large</option>
+        <option value="7">X-Large</option>
       </select>
-    </div>
-    <div class="toolkit-group">
+    </label>
+    <label class="toolkit-group">
       <div class="toolkit-item">
         Color:
       </div>
-      <input type="color">
-    </div>
-    <div class="toolkit-group">
+      <input type="color" @change="$emit('style-text', 'foreColor', $event.target.value)">
+    </label>
+    <label class="toolkit-group">
       <div class="toolkit-item">
         Background:
       </div>
-      <input type="color" value="#fff">
-    </div>
+      <input type="color" value="#fff" @change="$emit('style-text', 'hiliteColor', $event.target.value)">
+    </label>
   </div>
 </template>
 
@@ -57,8 +54,9 @@
   }
 
   .toolkit-group select {
+    font-family: Helvetica, sans-serif;
     display: block;
-    width: 40px;
+    width: 70px;
     border: none;
     outline: none;
     margin-right: 8px;

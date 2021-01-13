@@ -5,7 +5,9 @@
       contenteditable="true" 
       spellcheck="false"
     > {{ text }} </div>
-    <Toolkit />
+    <Toolkit
+      v-on:style-text="styleText"
+    />
   </div>
 </template>
 
@@ -17,6 +19,13 @@
     },
     props: {
       text: String
+    },
+    methods: {
+      styleText: function(style, value){
+        console.log('Style Text: ', style, ' | ', value);
+        document.execCommand("styleWithCSS", false, true);
+        document.execCommand(style, false, value)
+      }
     }
   }
 </script>
