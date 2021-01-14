@@ -19,10 +19,11 @@
         Size:
       </div>
       <select @change="$emit('style-text', 'fontSize', $event.target.value)">
-        <option value="1">Small</option>
-        <option value="3">Normal</option>
-        <option value="5">Large</option>
-        <option value="7">X-Large</option>
+        <option value="1">X-Small</option>
+        <option value="2">Small</option>
+        <option value="3" selected="selected">Normal</option>
+        <option value="4">Large</option>
+        <option value="5">X-Large</option>
       </select>
     </label>
     <label class="toolkit-group">
@@ -37,6 +38,11 @@
       </div>
       <input type="color" value="#fff" @change="$emit('style-text', 'hiliteColor', $event.target.value)">
     </label>
+    <div class="toolkit-group">
+      <div class="toolkit-item" @click="$emit('create-json')">
+        get json
+      </div>
+    </div>
   </div>
 </template>
 

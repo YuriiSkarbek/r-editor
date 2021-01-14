@@ -3,7 +3,7 @@
     <h1 class="title">
       Welcome to simple text editor 
     </h1>
-    <Editor text="Hello, how about going for a walk?"/>
+    <Editor/>
   </div>
 </template>
 
