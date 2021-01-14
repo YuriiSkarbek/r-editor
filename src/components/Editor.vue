@@ -5,7 +5,7 @@
       contenteditable="true" 
       spellcheck="false"
       ref="editor"
-      v-html="text"
+      v-html="defaultText"
     ></div>
     <Toolkit
       v-on:style-text="styleText"
@@ -20,13 +20,13 @@
     components: {
       Toolkit
     },
-    data: {
-      return() {
-        text: String
+    data() {
+      return {
+        defaultText: String
       }
     },
     created() {
-      this.text = '<span style="color: rgb(0, 143, 179);">Hello</span>, how about going <span style="text-decoration-line: line-through;">to cycling</span>&nbsp;for <span style="font-weight: bold;">a walk</span>? I`ll take a <span style="background-color: rgb(235, 250, 117);">boards games</span>';
+      this.defaultText = '<span style="color: rgb(0, 143, 179);">Hello</span>, how about going <span style="text-decoration-line: line-through;">cycling</span>&nbsp;for <span style="font-weight: bold;">a walk</span>? I`ll take <span style="background-color: rgb(235, 250, 117);">boards games</span>';
     },
     methods: {
       styleText: function(style, value){
@@ -38,7 +38,6 @@
           textEl: []
         };
         let childNodes = this.$refs.editor.childNodes;
-        console.log(childNodes.length);
         for(let i = 0; i < childNodes.length; i++){
           if(childNodes[i].nodeName === "#text"){
             jsonData.textEl.push({
